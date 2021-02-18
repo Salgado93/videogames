@@ -15,6 +15,9 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Panel Administrativo') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('all.category') }}">
+                        Categorías
+                    </x-jet-nav-link>
                 </div>
             </div>
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\CategoriaController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -24,8 +25,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/contacto', [ContactoController::class, 'index']);
+Route::get('/contacto', [ContactoController::class, 'index'])->name('daniel');
 
+Route::get('/categoria/all', [CategoriaController::class, 'AllCat'])->name('all.category');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
