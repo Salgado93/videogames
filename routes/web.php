@@ -28,6 +28,7 @@ Route::get('/about', function () {
 Route::get('/contacto', [ContactoController::class, 'index'])->name('daniel');
 
 Route::get('/categoria/all', [CategoriaController::class, 'AllCat'])->name('all.category');
+Route::post('/categoria/add', [CategoriaController::class, 'AddCat'])->name('store.category');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
