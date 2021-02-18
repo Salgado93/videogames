@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactoController;
-
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,7 @@ Route::get('/contacto', [ContactoController::class, 'index']);
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    //$users = User::all();
+    $users = DB::table('users')->get();
+    return view('dashboard',compact('users'));
 })->name('dashboard');
