@@ -13,4 +13,11 @@ class Categoria extends Model
         'user_id',
         'nombre_categoria',
     ];
+
+    
+    
+    //ORM Relation
+    //public function user(){
+    //    return $this->hasOne(User::class, 'id', 'user_id')
+    //}
 }

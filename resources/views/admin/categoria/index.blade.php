@@ -33,7 +33,7 @@
                                 <tr>
                                     <th scope="row">{{ $categorias->firstItem()+$loop->index }}</th>
                                     <td>{{ $categoria->nombre_categoria }}</td>
-                                    <td>{{ $categoria->user_id }}</td>
+                                    <td>{{ $categoria->name }}</td>
                                     <td>
                                         @if($categoria->created_at == NULL)
                                             <span class="text-danger">Sin Fecha</span>

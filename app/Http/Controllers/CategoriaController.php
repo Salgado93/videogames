@@ -11,8 +11,13 @@ use Illuminate\Support\Facades\DB;
 class CategoriaController extends Controller
 {
     public function AllCat(){
+        $categorias = DB::table('categorias')
+                    ->join('users','categorias.user_id','users.id')
+                    ->select('categorias.*','users.name')
+                    ->latest()->paginate(5);
+        
         //$categorias = Categoria::latest()->get();
-        $categorias = DB::table('categorias')->latest()->paginate(5);
+        //$categorias = DB::table('categorias')->latest()->paginate(5);
         return view('admin.categoria.index', compact('categorias'));
     }
 
