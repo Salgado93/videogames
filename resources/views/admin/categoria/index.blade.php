@@ -28,23 +28,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @php($i = 1)
+                            <!-- @php($i = 1) -->
                                 @foreach($categorias as $categoria)
                                 <tr>
-                                    <th scope="row">{{ $i++ }}</th>
+                                    <th scope="row">{{ $categorias->firstItem()+$loop->index }}</th>
                                     <td>{{ $categoria->nombre_categoria }}</td>
                                     <td>{{ $categoria->user_id }}</td>
                                     <td>
                                         @if($categoria->created_at == NULL)
                                             <span class="text-danger">Sin Fecha</span>
                                         @else
-                                        {{ $categoria->created_at->diffForHumans() }}
+                                        {{ Carbon\Carbon::parse($categoria->created_at)->diffForHumans() }}
                                         @endif
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $categorias->links() }}
                     </div>
                 </div>
                 <div class='col-md-4'>
