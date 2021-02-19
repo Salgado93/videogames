@@ -29,6 +29,12 @@ Route::get('/contacto', [ContactoController::class, 'index'])->name('daniel');
 
 Route::get('/categoria/all', [CategoriaController::class, 'AllCat'])->name('all.category');
 Route::post('/categoria/add', [CategoriaController::class, 'AddCat'])->name('store.category');
+Route::get('/categoria/editar/{id}', [CategoriaController::class, 'Editar']);
+Route::post('/categoria/actualizar/{id}', [CategoriaController::class, 'Actualizar']);
+Route::get('/softdelete/categoria/{id}', [CategoriaController::class, 'SoftDelete']);
+Route::get('/categoria/restaurar/{id}', [CategoriaController::class, 'Restore']);
+Route::get('/pdelete/categoria/{id}', [CategoriaController::class, 'Pdelete']);
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

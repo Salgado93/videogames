@@ -25,6 +25,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Usuario</th>
                                 <th scope="col">Creado</th>
+                                <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,13 +34,17 @@
                                 <tr>
                                     <th scope="row">{{ $categorias->firstItem()+$loop->index }}</th>
                                     <td>{{ $categoria->nombre_categoria }}</td>
-                                    <td>{{ $categoria->name }}</td>
+                                    <td>{{ $categoria->user->name }}</td>
                                     <td>
                                         @if($categoria->created_at == NULL)
                                             <span class="text-danger">Sin Fecha</span>
                                         @else
                                         {{ Carbon\Carbon::parse($categoria->created_at)->diffForHumans() }}
                                         @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('categoria/editar/'.$categoria->id) }}" class="btn btn-info">Editar</a>
+                                        <a href="{{ url('softdelete/categoria/'.$categoria->id) }}" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -68,5 +73,55 @@
                 </div>
             </div>
         </div>
+
+        <!-- Trash -->
+        
+        <div class="container">
+            <div class="row">
+                <div class='col-md-8'>
+                    <div class="card">
+                        <div class="card-header">Eliminados</div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Creado</th>
+                                <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <!-- @php($i = 1) -->
+                                @foreach($trashCat as $categoria)
+                                <tr>
+                                    <th scope="row">{{ $categorias->firstItem()+$loop->index }}</th>
+                                    <td>{{ $categoria->nombre_categoria }}</td>
+                                    <td>{{ $categoria->user->name }}</td>
+                                    <td>
+                                        @if($categoria->created_at == NULL)
+                                            <span class="text-danger">Sin Fecha</span>
+                                        @else
+                                        {{ Carbon\Carbon::parse($categoria->created_at)->diffForHumans() }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('categoria/restaurar/'.$categoria->id) }}" class="btn btn-info">Restaurar</a>
+                                        <a href="{{ url('pdelete/categoria/'.$categoria->id) }}" class="btn btn-danger">Eliminar Permanente</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $trashCat->links() }}
+                    </div>
+                </div>
+                <div class='col-md-4'>
+
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </x-app-layout>
