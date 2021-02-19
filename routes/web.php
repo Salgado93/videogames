@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ProductoController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -34,6 +35,8 @@ Route::post('/categoria/actualizar/{id}', [CategoriaController::class, 'Actualiz
 Route::get('/softdelete/categoria/{id}', [CategoriaController::class, 'SoftDelete']);
 Route::get('/categoria/restaurar/{id}', [CategoriaController::class, 'Restore']);
 Route::get('/pdelete/categoria/{id}', [CategoriaController::class, 'Pdelete']);
+Route::get('/producto/all', [ProductoController::class, 'AllProd'])->name('all.producto');
+
 
 
 
