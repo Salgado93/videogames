@@ -72,7 +72,7 @@
                   <button type="button" name="search" id="search-btn" class="btn btn-flat">
                     <i class="mdi mdi-magnify"></i>
                   </button>
-                  <input type="text" name="query" id="search-input" class="form-control" placeholder="'button', 'chart' etc."
+                  <input type="text" name="query" id="search-input" class="form-control"
                     autofocus autocomplete="off" />
                 </div>
                 <div id="search-results-container">
@@ -88,7 +88,7 @@
                       <i class="mdi mdi-bell-outline"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
-                      <li class="dropdown-header">You have 5 notifications</li>
+                      <li class="dropdown-header">Notificaciones</li>
                       <li>
                         <a href="#">
                           <i class="mdi mdi-account-plus"></i> New user registered
@@ -128,14 +128,14 @@
                   <li class="dropdown user-menu">
                     <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                       <img src="{{ asset('backend/assets/img/user/user.png') }}" class="user-image" alt="User Image" />
-                      <span class="d-none d-lg-inline-block">Usuario</span>
+                      <span class="d-none d-lg-inline-block">{{ Auth::user()->name }}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                       <!-- User image -->
                       <li class="dropdown-header">
                         <img src="{{ asset('backend/assets/img/user/user.png') }}" class="img-circle" alt="User Image" />
                         <div class="d-inline-block">
-                          User <small class="pt-1">user@gmail.com</small>
+                          {{ Auth::user()->name }} <small class="pt-1">{{ Auth::user()->email }}</small>
                         </div>
                       </li>
 
@@ -171,12 +171,12 @@
                   <footer class="footer mt-auto">
             <div class="copyright bg-white">
               <p>
-                &copy; <span id="copy-year">2019</span> Copyright Sleek Dashboard Bootstrap Template by
+                &copy; <span id="copy-year">2021</span> Copyright Videogames Template by
                 <a
                   class="text-primary"
                   href="http://www.iamabdus.com/"
                   target="_blank"
-                  >Usuario</a
+                  >Daniel S.</a
                 >.
               </p>
             </div>

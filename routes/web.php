@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoController;
 use App\Models\User;
@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $productos = DB::table('productos')->get();
+    return view('home', compact('productos'));
 });
 
 Route::get('/about', function () {
@@ -40,9 +41,16 @@ Route::post('/producto/add', [ProductoController::class, 'AgregarProducto'])->na
 Route::get('/producto/editar/{id}', [ProductoController::class, 'Editar']);
 Route::post('/producto/actualizar/{id}', [ProductoController::class, 'Actualizar']);
 Route::get('/user/logout', [ProductoController::class, 'Logout'])->name('user.logout');
+Route::get('/admin/message', [ContactController::class, 'AdminMessage'])->name('admin.message');
 
+Route::get('/contact', [ContactController::class, 'Contact'])->name('contact');
+Route::post('/contact/form', [ContactController::class, 'ContactForm'])->name('contact.form');
 
-
+// Amdin Contact Page Route 
+Route::get('/admin/contact', [ContactController::class, 'AdminContact'])->name('admin.contact');
+Route::get('/admin/add/contact', [ContactController::class, 'AdminAddContact'])->name('add.contact');
+Route::post('/admin/store/contact', [ContactController::class, 'AdminStoreContact'])->name('store.contact');
+Route::get('/admin/message', [ContactController::class, 'AdminMessage'])->name('admin.message');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     //$users = User::all();
