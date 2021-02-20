@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use Illuminate\Support\Carbon;
+use Auth;
 
 class ProductoController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function AllProd(){
         $productos = Producto::latest()->paginate(5);
         return view('admin.producto.index', compact('productos'));
@@ -79,7 +84,10 @@ class ProductoController extends Controller
             ]);
             return Redirect()->back()->with('success','Producto Actualizado Exitosamente');
         }
-        
+    }
+    public function Logout(){
+        Auth::logout();
+        return Redirect()->route('login')->with('success','Sesión Cerrada');
     }
 
 }

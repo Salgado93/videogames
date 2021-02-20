@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function AllCat(){
         //$categorias = DB::table('categorias')
         //            ->join('users','categorias.user_id','users.id')
