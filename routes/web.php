@@ -37,6 +37,9 @@ Route::get('/categoria/restaurar/{id}', [CategoriaController::class, 'Restore'])
 Route::get('/pdelete/categoria/{id}', [CategoriaController::class, 'Pdelete']);
 Route::get('/producto/all', [ProductoController::class, 'AllProd'])->name('all.producto');
 Route::post('/producto/add', [ProductoController::class, 'AgregarProducto'])->name('store.producto');
+Route::get('/producto/editar/{id}', [ProductoController::class, 'Editar']);
+Route::post('/producto/actualizar/{id}', [ProductoController::class, 'Actualizar']);
+
 
 
 

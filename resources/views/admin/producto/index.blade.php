@@ -24,8 +24,9 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Imagen</th>
+                                <th scope="col">Precio</th>
                                 <th scope="col">Creado</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,6 +36,7 @@
                                     <th scope="row">{{ $productos->firstItem()+$loop->index }}</th>
                                     <td>{{ $producto->producto_nombre }}</td>
                                     <td> <img src="{{ asset($producto->producto_imagen) }}" style="height:40px; width:70px;" > </td>
+                                    <td>{{ $producto->producto_precio }}</td>
                                     <td>
                                         @if($producto->created_at == NULL)
                                             <span class="text-danger">Sin Fecha</span>
@@ -73,7 +75,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <!--<div class="mb-3">
+                                <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Precio</label>
                                     <input type="number" min="0.00" step="0.01" value="0.00" name="producto_precio" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     @error('producto_precio')
@@ -82,11 +84,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Descripción</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    @error('producto_precio')
+                                    <textarea class="form-control" name="producto_descripcion" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    @error('producto_descripcion')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>-->
+                                </div>
                                 <button type="submit" class="btn btn-primary">Agregar Producto</button>
                             </form>
                         </div>
